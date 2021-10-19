@@ -1,0 +1,50 @@
+<h2>Suscríbete a nuestra Newsletter:</h2>
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" formControlName="name" />
+    <!-- Si el campo name es invalido / ha sido tocado / submitted = true -->
+    <div *ngIf="!contactForm.get('name')?.valid &&
+      (contactForm.get('name')?.dirty || submitted)">
+        Has introducido mal tu nombre
+    </div>
+
+
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" formControlName="surname" />
+    <!-- Si el campo surname es invalido / ha sido surname / submitted = true -->
+    <div *ngIf="!contactForm.get('surname')?.valid &&
+      (contactForm.get('surname')?.dirty || submitted)">
+        Has introducido mal tu apellido
+    </div>
+
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" formControlName="age" />
+    <div *ngIf="!contactForm.get('age')?.valid &&
+        (contactForm.get('age')?.dirty || submitted)">
+        Has introducido mal tu edad
+    </div>
+
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <!-- Si el campo surname es invalido / ha sido surname / submitted = true -->
+    <div *ngIf="!contactForm.get('email')?.valid &&
+        (contactForm.get('email')?.dirty || submitted)">
+        Has introducido mal tu email
+    </div>
+
+
+    <!-- Fieldset del segundo campo - repeatPassword -->
+
+    <label for="gender">Gender:</label>
+    <input type="radio" formControlName="gender" value="Male"> Male
+    <input type="radio" formControlName="gender" value="Female"> Female
+    <input type="radio" formControlName="gender" value="Other"> Other
+
+    <!-- Botón deshabilitado hasta que el formulario sea valid -->
+    <button type="submit" [disabled]="!contactForm?.valid">Submit</button>
+
+</form>
